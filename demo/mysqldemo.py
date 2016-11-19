@@ -1,14 +1,7 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-########## prepare ##########
-
-# install mysql-connector-python:
-# pip3 install mysql-connector-python --allow-external mysql-connector-python
 
 import mysql.connector
 
-# change root password to yours:
 conn = mysql.connector.connect(user='root', password='123456', database='test')
 
 cursor = conn.cursor()
