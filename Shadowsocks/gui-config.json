@@ -1,0 +1,34 @@
+{
+"configs" : [
+  {
+"server" : "a.iss.tf",
+"server_port" : 1024,
+"password" : "96114809",
+"method" : "aes-256-cfb",
+"remarks" : "正常"}
+,
+  {
+"server" : "b.iss.tf",
+"server_port" : 20000,
+"password" : "63967306",
+"method" : "aes-256-cfb",
+"remarks" : "正常"}
+,
+  {
+"server" : "c.iss.tf",
+"server_port" : 10008,
+"password" : "50399905",
+"method" : "aes-256-cfb",
+"remarks" : "正常"}
+
+],
+"strategy" : null,
+"index" : 2,
+"global" : true,
+"enabled" : false,
+"shareOverLan" : false,
+"isDefault" : false,
+"localPort" : 1080,
+"pacUrl" : null,
+"useOnlinePac" : false
+}
