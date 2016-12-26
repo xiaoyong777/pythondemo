@@ -6,35 +6,33 @@ import os
 
 def GET():
     try:
-        html = urlopen("http://www.ishadowsocks.org")
+        html = urlopen("http://www.ishadowsocks.info")
         bsObj = BeautifulSoup(html.read(),"html.parser")
     except BaseException as e:
         return ("网络链接错误,检查网络和链接地址是否正常",None)
-    try:
-        bsRow = bsObj.find(id="free").find("div").findAll("div")[2]
-        list=[]
-        for bsCol in bsRow.findAll("div",{"class":"col-sm-4 text-center"}):
-            dict={"server":"","server_port":"","password":"","method":"","remarks":""}
-            index = 0
-            for bsAccount in bsCol.findAll("h4"):
-                val = bsAccount.get_text().split(':')[1]
-                if index == 0:
-                    dict["server"] = val
-                elif index == 1:
-                    dict["server_port"] = val
-                elif index == 2:
-                    dict["password"] = val
-                elif index == 3:
-                    dict["method"] = val
-                elif index ==4:
-                    dict["remarks"] = val
-                    break
-                else:
-                    break
-                index = index+1
-            list.append(dict)
-    except BaseException as e:
-        return ("解析错误，检查链接和解析规则是否正确",None)
+
+    bsRow = bsObj.find(id="free").find("div").findAll("div")[2]
+    list=[]
+    for bsCol in bsRow.findAll("div",{"class":"col-sm-4 text-center"}):
+        dict={"server":"","server_port":"","password":"","method":"","remarks":""}
+        index = 0
+        for bsAccount in bsCol.findAll("h4"):
+            print(bsAccount)
+            val = bsAccount.get_text().split(':')[1]
+            if index == 0:
+                dict["server"] = val
+            elif index == 1:
+                dict["server_port"] = val
+            elif index == 2:
+                dict["password"] = val
+            elif index == 3:
+                dict["method"] = val
+                break
+            else:
+                break
+            index = index+1
+        list.append(dict)
+
     try:
         BASE_DIR = os.path.dirname(__file__)
         file_path = os.path.join(BASE_DIR, 'gui-config.json')
