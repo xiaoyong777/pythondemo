@@ -6,7 +6,7 @@ import os
 
 def GET():
     try:
-        html = urlopen("http://www.ishadowsocks.org")
+        html = urlopen("http://www.ishadowsocks.info")
         bsObj = BeautifulSoup(html.read(),"html.parser")
     except BaseException as e:
         return ("网络链接错误,检查网络和链接地址是否正常",None)
@@ -26,15 +26,13 @@ def GET():
                     dict["password"] = val
                 elif index == 3:
                     dict["method"] = val
-                elif index ==4:
-                    dict["remarks"] = val
                     break
                 else:
                     break
                 index = index+1
             list.append(dict)
     except BaseException as e:
-        return ("解析错误，检查链接和解析规则是否正确",None)
+        return ("解析错误，检查链接和解析规则是否正确", None)
     try:
         BASE_DIR = os.path.dirname(__file__)
         file_path = os.path.join(BASE_DIR, 'gui-config.json')
